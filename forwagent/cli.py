@@ -20,7 +20,7 @@ def init_config(args):
 
 def exec_agent(args):
     if not os.path.isdir(CONF_DIR):
-        print("Configuration directory missing, run 'forwagent init' to initialize.")
+        print("Configuration directory ({}) missing, run 'forwagent init' to initialize.".format(CONF_DIR))
         sys.exit(1)
 
     from .agent import main
@@ -30,7 +30,7 @@ def exec_agent(args):
 
 def exec_server(args):
     if not os.path.isdir(CONF_DIR):
-        print("Configuration directory missing, run 'forwagent init' to initialize.")
+        print("Configuration directory ({}) missing, run 'forwagent init' to initialize.".format(CONF_DIR))
         sys.exit(1)
 
     try:

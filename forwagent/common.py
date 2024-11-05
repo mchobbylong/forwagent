@@ -8,7 +8,8 @@ TYPE_SSH = b"SSH"
 TYPE_GPG = b"GPG"
 
 
-CONF_DIR = os.path.join(os.path.expanduser("~"), ".forwagent")
+CONF_DIR = ".forwagent" if os.path.isdir(".forwagent") \
+    else os.path.join(os.path.expanduser("~"), ".forwagent")
 TRUSTED = os.path.join(CONF_DIR, "trusted.pem")
 KEY = os.path.join(CONF_DIR, "key.pem")
 CERT = os.path.join(CONF_DIR, "cert.pem")

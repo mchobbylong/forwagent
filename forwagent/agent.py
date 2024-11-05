@@ -50,7 +50,7 @@ def main(server_addr):
         if os.path.exists(fname):
             logger.debug("Remove stale socket file: %s", fname)
             os.remove(fname)
-        s.bind(fname),
+        s.bind(fname)
         socket_files.append(fname)
         s.listen()
         logger.debug("Created domain socket: %s", fname)

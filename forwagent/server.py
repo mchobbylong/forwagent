@@ -20,7 +20,14 @@ logger = logging.getLogger(__name__)
 
 
 def ensure_agent():
-    subprocess.call(["gpg-connect-agent", "/bye"])
+    proc = subprocess.run(["gpg-connect-agent", "/bye"], check=False, capture_output=True)
+    output = proc.stderr.decode().splitlines()
+    if not output:
+        logger.debug("Ensure gpg agent by calling gpg-connect-agent: (empty output)")
+    else:
+        logger.debug("Ensure gpg agent by calling gpg-connect-agent:")
+        for line in output:
+            logger.debug(line)
 
 
 def get_ssh_agent():
